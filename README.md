@@ -16,3 +16,8 @@ Configuração para configurar quando salvar o arquivo:
 }
 
 Proxima Aula:https://www.youtube.com/watch?v=QISzxPDn5l4&list=PLedVhPP7RyiKOiiGMTMYil3yTEoOxO7CK&index=4
+
+## instalação do antD e styledcomponent
+
+npm install antd
+npm install --save styled-components

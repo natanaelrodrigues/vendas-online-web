@@ -19,7 +19,7 @@ const LoginScreen = () => {
     const handleSubmit = async () => {
          await axios({
                 method: "post",
-                url: 'http://localhost:8082/auth',
+                url: 'http://localhost:8080/auth',
                 data: {
                     email: username,
                     password

@@ -19,9 +19,7 @@ export const BackgroundImage = styled.img`
   z-index: -1;
 `;
 
-export const TitleLogin = styled(Title)`
-
-`
+export const TitleLogin = styled(Title)``
 
 export const ContainerLogin = styled.div`
   display: flex;

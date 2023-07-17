@@ -15,9 +15,13 @@ Configuração para configurar quando salvar o arquivo:
 ]
 }
 
-Proxima Aula:https://www.youtube.com/watch?v=ukg-UJspWt0&list=PLedVhPP7RyiKOiiGMTMYil3yTEoOxO7CK&index=13
+Proxima Aula:https://www.youtube.com/watch?v=FJ7qh4dCSxg&list=PLedVhPP7RyiKOiiGMTMYil3yTEoOxO7CK&index=15
 
 ## instalação do antD e styledcomponent
 
 npm install antd
 npm install --save styled-components
+
+## instalação do router
+
+npm install react-router-dom localforage match-sorter sort-by

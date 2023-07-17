@@ -3,6 +3,7 @@ import axios from 'axios'
 import Button from "../../../shared/Buttons/button/Botton";
 import Input from "../../../shared/inputs/input/input";
 import { BackgroundImage, ContainerLogin, ContainerLoginScreen, LimitedContainer, LogoImage, TitleLogin } from "../styles/loginScreen.styles";
+import SVGLogo from "../../../shared/icons/SVGLogo";
 
 const LoginScreen = () => {
     const [username, setUsername] = useState('')
@@ -40,7 +41,7 @@ const LoginScreen = () => {
             <BackgroundImage src="./background.png" />
             <ContainerLogin>
             <LimitedContainer>
-                <LogoImage src="./logo.png" />
+                <SVGLogo />
                 <TitleLogin level={2} type='secondary'>LOGIN</TitleLogin>
                 <Input title='Usuario' margin="32px 0px 0px" onChange={handleUsername} value={username}/>
                 <Input type="password" title= 'Senha' margin="32px 0px 0px" onChange={handlePassword} value={password}/>

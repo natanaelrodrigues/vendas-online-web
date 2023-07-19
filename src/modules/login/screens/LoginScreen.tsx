@@ -1,12 +1,13 @@
 import { useState } from "react";
-import axios from 'axios'
 import Button from "../../../shared/components/Buttons/button/Botton";
 import Input from "../../../shared/components/input/input";
 import { BackgroundImage, ContainerLogin, ContainerLoginScreen, LimitedContainer, LogoImage, TitleLogin } from "../styles/loginScreen.styles";
 import SVGLogo from "../../../shared/components/icons/SVGLogo";
 import { useRequests } from "../../../shared/hooks/useRequests";
+import { useGlobalContext } from "../../../shared/hooks/useGlobalContext";
 
 const LoginScreen = () => {
+    const { accessToken, useAccessToken } = useGlobalContext();
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const { postRequest, loading } = useRequests()

@@ -1,5 +1,9 @@
+import { useGlobalContext } from "../../../shared/hooks/useGlobalContext"
+
 const Product = () => {
- return <h1>Produtos</h1>
+    const { user } = useGlobalContext();
+
+ return <h1>{`Produtos ${user?.name}`}</h1>
 }
 
 export default Product

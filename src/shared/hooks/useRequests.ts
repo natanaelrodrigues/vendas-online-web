@@ -11,7 +11,7 @@ import { setAuthorizationToken } from '../functions/connections/auth';
 
 export const useRequests = () => {
   const [loading, setLoading] = useState(false);
-  const { setNotification } = useGlobalContext();
+  const { setNotification, setUser } = useGlobalContext();
   const navigate = useNavigate();
 
   const getRequest = async (url: string) => {
@@ -50,6 +50,7 @@ export const useRequests = () => {
     setLoading(true);
     await connectionAPIPost<AuthType>(URL_AUTH, body)
       .then((result) => {
+        setUser(result.user);
         setAuthorizationToken(result.accessToken);
         navigate(ProductRoutesEnum.PRODUCT);
       })

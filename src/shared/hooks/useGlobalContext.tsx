@@ -47,7 +47,6 @@ export const useGlobalContext = () => {
     },[])
 
     const setAccessToken = (accessToken: string) =>{
-        console.log(accessToken)
         setAuthorizationToken(accessToken)
         setGlobalData({
             ...globalData,

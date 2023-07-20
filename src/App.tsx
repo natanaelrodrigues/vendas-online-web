@@ -3,15 +3,11 @@ import { RouteObject, createBrowserRouter, RouterProvider } from 'react-router-d
 
 import { loginRoutes } from './modules/login/routes'
 import { useNotification } from './shared/hooks/useNotification'
+import { firstScreenRoutes } from './modules/firstScreen/routes'
+import { productRoutes } from './modules/product/routes'
 
 
-const mainRoutes: RouteObject[] = [
-  {path: '/', 
-  element: <div>Principal</div>,
-  errorElement: <div>Pagina 404</div>},
-]
-
-const router:RemixRouter = createBrowserRouter([...mainRoutes, ...loginRoutes])
+const router:RemixRouter = createBrowserRouter([...firstScreenRoutes, ...loginRoutes, ...productRoutes])
 
 function App() {
   const { contextHolder } = useNotification();

@@ -4,13 +4,11 @@ import Input from "../../../shared/components/input/input";
 import { BackgroundImage, ContainerLogin, ContainerLoginScreen, LimitedContainer, LogoImage, TitleLogin } from "../styles/loginScreen.styles";
 import SVGLogo from "../../../shared/components/icons/SVGLogo";
 import { useRequests } from "../../../shared/hooks/useRequests";
-import { useGlobalContext } from "../../../shared/hooks/useGlobalContext";
 import { UserType } from "../types/UserType";
 
 
 
 const LoginScreen = () => {
-    const { accessToken, useAccessToken, setAccessToken } = useGlobalContext();
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const { postRequest, loading } = useRequests()
@@ -23,12 +21,11 @@ const LoginScreen = () => {
         setPassword(e.target.value)
     }
 
-    const handleSubmit = async () => {
-        const user = await postRequest<UserType>('http://localhost:8080/auth', {
+    const handleSubmit = () => {
+        postRequest<UserType>('http://localhost:8080/auth', {
             email: username,
             password
         })
-        setAccessToken(user?.accessToken)
     }
 
     return (

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Button from "../../../shared/components/Buttons/button/Botton";
+import Button from "../../../shared/components/Buttons/button/Button";
 import Input from "../../../shared/components/input/input";
 import { BackgroundImage, ContainerLogin, ContainerLoginScreen, LimitedContainer, LogoImage, TitleLogin } from "../styles/loginScreen.styles";
 import SVGLogo from "../../../shared/components/icons/SVGLogo";

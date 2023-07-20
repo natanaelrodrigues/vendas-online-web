@@ -4,14 +4,13 @@ import Input from "../../../shared/components/input/input";
 import { BackgroundImage, ContainerLogin, ContainerLoginScreen, LimitedContainer, LogoImage, TitleLogin } from "../styles/loginScreen.styles";
 import SVGLogo from "../../../shared/components/icons/SVGLogo";
 import { useRequests } from "../../../shared/hooks/useRequests";
-import { UserType } from "../types/UserType";
 
 
 
 const LoginScreen = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const { postRequest, loading } = useRequests()
+    const { authRequest, loading } = useRequests()
 
     const handleUsername = (e: React.ChangeEvent<HTMLInputElement>) =>{
         setUsername(e.target.value)
@@ -22,7 +21,7 @@ const LoginScreen = () => {
     }
 
     const handleSubmit = () => {
-        postRequest<UserType>('http://localhost:8080/auth', {
+        authRequest({
             email: username,
             password
         })

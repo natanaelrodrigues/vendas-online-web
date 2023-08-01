@@ -30,6 +30,7 @@ const ProductInsert = () =>{
   },[])
 
   const handleInsertProduct = () =>{
+    console.log(product)
     connectionAPIPost(URL_PRODUCT,product)
   }
 
@@ -82,7 +83,7 @@ const ProductInsert = () =>{
             }))
           }
         />
-        <Button type="primary" onclick={handleInsertProduct}>Inserir produto</Button>
+        <Button type="primary" onClick={handleInsertProduct}>Inserir produto</Button>
       </LimitedContainer>
     </Screen>
 }

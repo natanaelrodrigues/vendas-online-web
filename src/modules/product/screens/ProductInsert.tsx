@@ -15,6 +15,7 @@ import { LimitedContainer } from "../../../shared/components/styles/limited.styl
 import { DisplayFlexJustifyRight } from "../../../shared/components/styles/display.styled";
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../../shared/hooks/useGlobalContext";
+import InputMoney from "../../../shared/components/inputs/inputMondy/InputMoney";
 
 
 
@@ -81,7 +82,7 @@ const ProductInsert = () =>{
         <LimitedContainer width={400}>
           <Input onChange={(event) => onChange(event, 'name')}  value={product.name} margin='0px 0px 16px 0px' title='Nome' placeholder='Nome'/>
           <Input onChange={(event) => onChange(event, 'image')} value={product.image} margin='0px 0px 16px 0px' title='Url Imagem' placeholder='Url Imagem' />
-          <Input onChange={(event) => onChange(event, 'price', true)} value={product.price} margin='0px 0px 16px 0px' title='Preço' placeholder='Preço' />
+          <InputMoney onChange={(event) => onChange(event, 'price', true)} value={product.price} margin='0px 0px 16px 0px' title='Preço' placeholder='Preço' />
           <Select
             title='Categoria'
             margin='0px 0px 32px 0px'

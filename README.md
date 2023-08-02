@@ -15,7 +15,7 @@ Configuração para configurar quando salvar o arquivo:
 ]
 }
 
-Proxima Aula: https://www.youtube.com/watch?v=Q4GalTCsCqk&list=PLedVhPP7RyiKOiiGMTMYil3yTEoOxO7CK&index=33
+Proxima Aula: https://www.youtube.com/watch?v=gCtHh3NW2OE&list=PLedVhPP7RyiKOiiGMTMYil3yTEoOxO7CK&index=34
 
 ## instalação do antD e styledcomponent
 

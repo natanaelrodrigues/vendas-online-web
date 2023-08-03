@@ -8,6 +8,7 @@ import { useRequests } from "../../../shared/hooks/useRequests";
 
 
 const LoginScreen = () => {
+    const { navigate } = useNavigate();
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const { authRequest, loading } = useRequests()
@@ -22,6 +23,7 @@ const LoginScreen = () => {
 
     const handleSubmit = () => {
         authRequest({
+            navigate,
             email: username,
             password
         })

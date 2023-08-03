@@ -7,6 +7,7 @@ import { useState } from "react";
 
 
 const Header = () => {
+    const navigate = useNavigate();
     const [open, setOpen] = useState(false)
 
     const showModal = () =>{
@@ -22,7 +23,7 @@ const Header = () => {
             <Modal
                 title="Atenção"
                 open={open}
-                onOk={logout}
+                onOk={() => logout(navigate)}
                 onCancel={hideModal}
                 okText="Sim"
                 cancelText="Não"
@@ -32,7 +33,6 @@ const Header = () => {
             <HeaderContainer>
                 <LogoExit onClick={showModal} />
             </HeaderContainer>
-        
         </>
     )
 }

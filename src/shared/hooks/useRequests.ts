@@ -6,10 +6,11 @@ import ConnectionAPI, {
 } from '../functions/connections/connectionsAPI';
 import { URL_AUTH } from '../constants/urls';
 import { ERROR_INVALID_PASSWORD } from '../constants/errosStatus';
-import { useNavigate } from 'react-router-dom';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { ProductRoutesEnum } from '../../modules/product/routes';
 import { AuthType } from '../../modules/login/types/AuthType';
 import { setAuthorizationToken } from '../functions/connections/auth';
+import { FirstScreenEnum } from '../../modules/firstScreen/routes';
 
 export const useRequests = () => {
   const [loading, setLoading] = useState(false);
@@ -39,13 +40,13 @@ export const useRequests = () => {
     return returnData;
   };
 
-  const authRequest = async (body: unknown): Promise<void> => {
+  const authRequest = async (navigate: NavigateFunction, body: unknown): Promise<void> => {
     setLoading(true);
     await connectionAPIPost<AuthType>(URL_AUTH, body)
       .then((result) => {
         setUser(result.user);
         setAuthorizationToken(result.accessToken);
-        location.href = '/';
+        navigate(FirstScreenEnum.FIRST_SCREEN);
       })
       .catch(() => {
         setNotification(ERROR_INVALID_PASSWORD, 'error');

@@ -4,11 +4,12 @@ import Input from "../../../shared/components/inputs/input/input";
 import { BackgroundImage, ContainerLogin, ContainerLoginScreen, LimitedContainer, LogoImage, TitleLogin } from "../styles/loginScreen.styles";
 import SVGLogo from "../../../shared/components/icons/SVGLogo";
 import { useRequests } from "../../../shared/hooks/useRequests";
+import { useNavigate } from "react-router-dom";
 
 
 
 const LoginScreen = () => {
-    const { navigate } = useNavigate();
+    const navigate  = useNavigate();
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const { authRequest, loading } = useRequests()
@@ -22,8 +23,7 @@ const LoginScreen = () => {
     }
 
     const handleSubmit = () => {
-        authRequest({
-            navigate,
+        authRequest(navigate,{
             email: username,
             password
         })

@@ -1,9 +1,9 @@
 import { logout } from "../../functions/connections/auth";
 import { HeaderContainer, LogoExit } from "./header.style";
 
-import { ExclamationCircleOutlined } from "@ant-design/icons"; 
-import { Button, Modal, Space } from "antd"; 
+import { Modal } from "antd"; 
 import { useState } from "react"; 
+import { useNavigate } from "react-router-dom";
 
 
 const Header = () => {

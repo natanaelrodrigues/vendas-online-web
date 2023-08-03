@@ -40,13 +40,12 @@ export const useRequests = () => {
   };
 
   const authRequest = async (body: unknown): Promise<void> => {
-    const navigate = useNavigate();
     setLoading(true);
     await connectionAPIPost<AuthType>(URL_AUTH, body)
       .then((result) => {
         setUser(result.user);
         setAuthorizationToken(result.accessToken);
-        navigate(ProductRoutesEnum.PRODUCT);
+        location.href = '/';
       })
       .catch(() => {
         setNotification(ERROR_INVALID_PASSWORD, 'error');

@@ -14,27 +14,19 @@ import { DisplayFlexJustifyRight } from "../../../shared/components/styles/displ
 import { useNavigate } from "react-router-dom";
 import InputMoney from "../../../shared/components/inputs/inputMondy/InputMoney";
 import { useInsertProduct } from "../hooks/useInsertProduct";
+import { useCategory } from "../../category/screens/hooks/useCategory";
 
 
 
 const ProductInsert = () =>{
   const { product, loading, disableButton, onChangeInput, handleChangeSelect, handleInsertProduct } = useInsertProduct();
-  const { categories, setCategories  } = useDataContext();
-  const { request } = useRequests();
+  const { categories } = useCategory();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if(categories.length === 0) {
-      request(URL_CATEGORY, MethodsEnum.GET,setCategories)
-    }
-  },[])
 
   const handleOnClickCancel = () =>{
     navigate(ProductRoutesEnum.PRODUCT)
   }
-
- 
-
+  
     return <Screen listBreadcrumb={[
       {
         name:'HOME'

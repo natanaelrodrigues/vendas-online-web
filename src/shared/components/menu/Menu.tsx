@@ -6,6 +6,7 @@ import { HomeOutlined, LaptopOutlined, ProfileOutlined, SafetyCertificateOutline
 import type { MenuProps } from 'antd';
 import { Menu as MenuAntD } from 'antd';
 import { ProductRoutesEnum } from "../../../modules/product/routes";
+import { CategoryRoutesEnum } from "../../../modules/category/screens/routes";
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -44,12 +45,12 @@ const Menu = () =>{
                 {
                     key: 'category_view',
                     label: 'Visualizar',
-                    onClick: () => navigate(ProductRoutesEnum.PRODUCT)
+                    onClick: () => navigate(CategoryRoutesEnum.CATEGORY)
                 },
                 {
                     key: 'category_insert',
                     label: 'Inserir',
-                    onClick: () => navigate(ProductRoutesEnum.PRODUCT_INSERT)
+                    onClick: () => navigate(CategoryRoutesEnum.CATEGORY_INSERT)
                 },
             ]
         },

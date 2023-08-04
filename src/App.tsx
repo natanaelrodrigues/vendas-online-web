@@ -12,11 +12,12 @@ import { productRoutes } from './modules/product/routes'
 import { useRequests } from './shared/hooks/useRequests'
 import { URL_USER } from './shared/constants/urls'
 import { MethodsEnum } from './shared/enums/methods.enum'
+import { categoryRoutes } from './modules/category/screens/routes'
 
 
 
 const routes: RouteObject[] = [...loginRoutes]
-const routesLoggedIn: RouteObject[] = [...productRoutes, ...firstScreenRoutes].map((route) => ({
+const routesLoggedIn: RouteObject[] = [...productRoutes, ...categoryRoutes, ...firstScreenRoutes].map((route) => ({
   ...route,
   loader: verifyLoggedIn,
 }));

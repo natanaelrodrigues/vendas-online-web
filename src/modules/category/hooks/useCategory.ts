@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { useDataContext } from "../../../../shared/hooks/useDataContext"
-import { useRequests } from "../../../../shared/hooks/useRequests";
-import { URL_CATEGORY } from "../../../../shared/constants/urls";
-import { MethodsEnum } from "../../../../shared/enums/methods.enum";
+import { useDataContext } from "../../../shared/hooks/useDataContext"
+import { useRequests } from "../../../shared/hooks/useRequests";
+import { URL_CATEGORY } from "../../../shared/constants/urls";
+import { MethodsEnum } from "../../../shared/enums/methods.enum";
 
 export const useCategory = () =>{
     const { categories, setCategories } = useDataContext();

@@ -14,7 +14,7 @@ import { DisplayFlexJustifyRight } from "../../../shared/components/styles/displ
 import { useNavigate } from "react-router-dom";
 import InputMoney from "../../../shared/components/inputs/inputMondy/InputMoney";
 import { useInsertProduct } from "../hooks/useInsertProduct";
-import { useCategory } from "../../category/screens/hooks/useCategory";
+import { useCategory } from "../../category/hooks/useCategory";
 
 
 

@@ -1,11 +1,15 @@
 import styled from 'styled-components';
 
 interface DisplayFlexProps {
-  margin?:string;
+  margin?: string;
 }
 
 export const DisplayFlex = styled.div`
   display: flex;
+`;
+
+export const DisplayFlexJustifyCenter = styled(DisplayFlex)`
+  justify-content: center;
 `;
 
 export const DisplayFlexJustifyRight = styled(DisplayFlex)`
@@ -17,4 +21,3 @@ export const DisplayFlexJustifyBetween = styled(DisplayFlex)<DisplayFlexProps>`
   justify-content: space-between;
   ${(props) => (props.margin ? `margin: ${props.margin}` : '')}
 `;
-

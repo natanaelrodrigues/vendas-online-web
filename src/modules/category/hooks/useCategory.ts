@@ -6,7 +6,7 @@ import { MethodsEnum } from '../../../shared/enums/methods.enum';
 
 export const useCategory = () => {
   const { categories, setCategories } = useDataContext();
-  const { categoriesFiltered, setCategoriesFiltered } = useState(categories);
+  const [categoriesFiltered, setCategoriesFiltered] = useState(categories);
   const { request } = useRequests();
 
   useEffect(() => {

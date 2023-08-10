@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Button from "../../../shared/components/Buttons/button/Button";
 import Input from "../../../shared/components/inputs/input/input";
 import Screen from "../../../shared/components/screen/Screen";
@@ -7,7 +8,7 @@ import { useInsertCategory } from "../hooks/userInsertCategory";
 import { CategoryRoutesEnum } from "./routes";
 
 const CategoryInsert = () =>{
-    const { name, loading, handleOnChangeName, handleInsertCategory } = useInsertCategory();
+    const { name, loading, handleOnChangeName, handleInsertCategory, disabledButton } = useInsertCategory();
     const navigate = useNavigate();
 
     const handleOnClickCancel = () =>{
@@ -36,7 +37,7 @@ const CategoryInsert = () =>{
                             <Button danger onClick={handleOnClickCancel}>Cancelar</Button>
                         </LimitedContainer>
                         <LimitedContainer width={160}>
-                            <Button type="primary" loading={loading} /*disabled={disableButton} */ onClick={handleInsertCategory}>Inserir categoria</Button>
+                            <Button type="primary" loading={loading} disabled={disabledButton}  onClick={handleInsertCategory}>Inserir categoria</Button>
                         </LimitedContainer>
                     </DisplayFlexJustifyRight>
                 </LimitedContainer>

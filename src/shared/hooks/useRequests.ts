@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useGlobalContext } from './useGlobalContext';
 import ConnectionAPI, {
   MethodType,
   connectionAPIPost,
@@ -10,10 +9,11 @@ import { NavigateFunction } from 'react-router-dom';
 import { AuthType } from '../../modules/login/types/AuthType';
 import { setAuthorizationToken } from '../functions/connections/auth';
 import { FirstScreenEnum } from '../../modules/firstScreen/routes';
+import { useGlobalReducer } from '../../store/reducers/globalReducer/useGlobalReducer';
 
 export const useRequests = () => {
   const [loading, setLoading] = useState(false);
-  const { setNotification, setUser } = useGlobalContext();
+  const { setNotification, setUser } = useGlobalReducer();
 
   const request = async <T>(
     url: string,

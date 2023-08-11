@@ -4,11 +4,11 @@ import { connectionAPIPost } from '../../../shared/functions/connections/connect
 import { URL_PRODUCT } from '../../../shared/constants/urls';
 import { useNavigate } from 'react-router-dom';
 import { ProductRoutesEnum } from '../routes';
-import { useGlobalContext } from '../../../shared/hooks/useGlobalContext';
+import { useGlobalReducer } from '../../../store/reducers/globalReducer/useGlobalReducer';
 
 export const useInsertProduct = () => {
   const navigate = useNavigate();
-  const { setNotification } = useGlobalContext();
+  const { setNotification } = useGlobalReducer();
   const [loading, setLoading] = useState(false);
   const [disableButton, setDisableButton] = useState(true);
 

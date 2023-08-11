@@ -10,13 +10,14 @@ import { productRoutes } from './modules/product/routes'
 import { useRequests } from './shared/hooks/useRequests'
 import { URL_USER } from './shared/constants/urls'
 import { MethodsEnum } from './shared/enums/methods.enum'
-import { categoryRoutes } from './modules/category/screens/routes'
+import { categoryRoutes } from './modules/category/routes'
 import { useGlobalReducer } from './store/reducers/globalReducer/useGlobalReducer'
+import { orderRoutes } from './modules/orders/routes'
 
 
 
 const routes: RouteObject[] = [...loginRoutes]
-const routesLoggedIn: RouteObject[] = [...productRoutes, ...categoryRoutes, ...firstScreenRoutes].map((route) => ({
+const routesLoggedIn: RouteObject[] = [...orderRoutes, ...productRoutes, ...categoryRoutes, ...firstScreenRoutes].map((route) => ({
   ...route,
   loader: verifyLoggedIn,
 }));

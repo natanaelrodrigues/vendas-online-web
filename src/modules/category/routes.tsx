@@ -1,5 +1,5 @@
 import { RouteObject } from "react-router-dom";
-import CategoryInsert from "./CategoryInsert";
+import CategoryInsert from "./screens/CategoryInsert";
 import Category from ".";
 
 export enum CategoryRoutesEnum{

@@ -5,7 +5,7 @@ import Screen from "../../../shared/components/screen/Screen";
 import { DisplayFlexJustifyCenter, DisplayFlexJustifyRight } from "../../../shared/components/styles/display.styled";
 import { LimitedContainer } from "../../../shared/components/styles/limited.styled";
 import { useInsertCategory } from "../hooks/userInsertCategory";
-import { CategoryRoutesEnum } from "./routes";
+import { CategoryRoutesEnum } from "../routes";
 
 const CategoryInsert = () =>{
     const { name, loading, handleOnChangeName, handleInsertCategory, disabledButton } = useInsertCategory();

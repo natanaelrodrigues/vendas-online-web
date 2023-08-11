@@ -7,7 +7,7 @@ import { LimitedContainer } from "../../../shared/components/styles/limited.styl
 import { Input } from "antd";
 import Button from "../../../shared/components/Buttons/button/Button";
 import { useNavigate } from "react-router-dom";
-import { CategoryRoutesEnum } from "./routes";
+import { CategoryRoutesEnum } from "../routes";
 import { DisplayFlexJustifyBetween } from "../../../shared/components/styles/display.styled";
 
 const { Search } = Input;

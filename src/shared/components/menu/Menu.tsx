@@ -6,7 +6,8 @@ import { HomeOutlined, LaptopOutlined, ProfileOutlined, SafetyCertificateOutline
 import type { MenuProps } from 'antd';
 import { Menu as MenuAntD } from 'antd';
 import { ProductRoutesEnum } from "../../../modules/product/routes";
-import { CategoryRoutesEnum } from "../../../modules/category/screens/routes";
+import { CategoryRoutesEnum } from "../../../modules/category/routes";
+import { OrderRoutesEnum } from "../../../modules/orders/routes";
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -58,6 +59,7 @@ const Menu = () =>{
             key: 'order',
             label: 'Pedidos',
             icon: <SafetyCertificateOutlined />,
+            onClick: () => navigate(OrderRoutesEnum.ORDER)
         },
         {
             key: 'user',

@@ -25,3 +25,8 @@ npm install --save styled-components
 ## instalação do router
 
 npm install react-router-dom localforage match-sorter sort-by
+
+## instalação do redux.
+
+npm install react-redux
+npm install @reduxjs/toolkit react-redux

@@ -2,8 +2,15 @@ import { Descriptions, Divider } from 'antd';
 
 import Screen from '../../../shared/components/screen/Screen';
 import { OrderRoutesEnum } from '../routes';
+import { useOrderDetail } from '../hooks/useOrderDetail';
+import { useParams } from 'react-router-dom';
 
 const OrderDetail = () => {
+
+    const { orderId } = useParams<{orderId: string}>();
+
+    const { order } = useOrderDetail(orderId);
+
   return (
     <Screen
       listBreadcrumb={[

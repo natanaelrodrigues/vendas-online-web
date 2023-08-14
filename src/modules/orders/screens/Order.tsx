@@ -3,6 +3,8 @@ import Screen from "../../../shared/components/screen/Screen";
 import { OrderType } from "../../../shared/types/OrderTypes";
 import { useOrder } from "../hooks/useOrder";
 import Table from "../../../shared/components/table/Table";
+import { useNavigate } from "react-router-dom";
+import { OrderRoutesEnum } from "../routes";
 
 const columns: ColumnsType<OrderType> = [
     {
@@ -34,6 +36,7 @@ const columns: ColumnsType<OrderType> = [
 
 const Order = () =>{
     const { orders } = useOrder();
+    const navigate = useNavigate();
 
     return (
         <Screen
@@ -45,7 +48,11 @@ const Order = () =>{
               name:'PEDIDOS'
             }
           ]}>
-            <Table columns={columns} dataSource={orders} /> 
+            <Table 
+            onRow={(record) => ({
+                  onClick: () => navigate(OrderRoutesEnum.ORDER_ID),
+              })}
+            columns={columns} dataSource={orders} /> 
         </Screen>
     )
 }

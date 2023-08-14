@@ -4,7 +4,7 @@ import { OrderType } from "../../../shared/types/OrderTypes";
 import { useOrder } from "../hooks/useOrder";
 import Table from "../../../shared/components/table/Table";
 
-const columns: ColumnsType<OrderTypeType> = [
+const columns: ColumnsType<OrderType> = [
     {
       title: 'Id',
       dataIndex: 'id',
@@ -28,7 +28,7 @@ const columns: ColumnsType<OrderTypeType> = [
       title: 'Qtde. Produtos',
       dataIndex: 'amountProducts',
       key: 'amountProducts',
-      render: (text) => <a>{text}</aD>,
+      render: (text) => <a>{text}</a>,
     }
   ];
 

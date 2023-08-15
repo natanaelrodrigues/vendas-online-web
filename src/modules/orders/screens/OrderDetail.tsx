@@ -5,9 +5,11 @@ import { OrderRoutesEnum } from '../routes';
 import { useOrderDetail } from '../hooks/useOrderDetail';
 import { useParams } from 'react-router-dom';
 import { DisplayFlexJustifyCenter } from '../../../shared/components/styles/display.styled';
-import ListOrderProduct from '../components/ListOrderProducts';
 import ListOrdersProduct from '../components/ListOrderProducts';
 import { convertNumberToMoney } from '../../../shared/functions/money';
+import { insertMaskInCpf } from '../../../shared/functions/cpf';
+import { insertMaskInPhone } from '../../../shared/functions/phone';
+import { insertMaskInCEP } from '../../../shared/functions/address';
 
 const OrderDetail = () => {
 
@@ -41,9 +43,9 @@ const OrderDetail = () => {
           <Descriptions.Item label="Email" span={2}>
           {order.user?.email}
           </Descriptions.Item>
-          <Descriptions.Item label="Telefone">{order.user?.phone}</Descriptions.Item>
+          <Descriptions.Item label="Telefone">{insertMaskInPhone(order.user?.phone)}</Descriptions.Item>
           <Descriptions.Item label="CPF" span={2}>
-            {order.user?.cpf}
+            {insertMaskInCpf(order.user?.cpf)}
           </Descriptions.Item>
         </Descriptions>
         <Divider />
@@ -71,7 +73,7 @@ const OrderDetail = () => {
             {order.address?.numberAddress}
           </Descriptions.Item>
           <Descriptions.Item label="CEP" span={2}>
-            {order.address?.cep}
+            {insertMaskInCEP(order.address?.cep || '')}
           </Descriptions.Item>
         </Descriptions>
         <Divider />

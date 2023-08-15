@@ -1,20 +1,19 @@
-import { useEffect } from "react";
-import { useRequests } from "../../../shared/hooks/useRequests";
-import { useOrderReducer } from "../../../store/reducers/orderReducer/useOrderReducer";
-import { URL_ORDER_ID } from "../../../shared/constants/urls";
-import { MethodsEnum } from "../../../shared/enums/methods.enum";
+import { useEffect } from 'react';
+import { useRequests } from '../../../shared/hooks/useRequests';
+import { useOrderReducer } from '../../../store/reducers/orderReducer/useOrderReducer';
+import { URL_ORDER_ID } from '../../../shared/constants/urls';
+import { MethodsEnum } from '../../../shared/enums/methods.enum';
 
 export const useOrderDetail = (orderId?: string) => {
-    const { order, setOrder }  = useOrderReducer();
-    const { request }   = useRequests();
+  const { order, setOrder } = useOrderReducer();
+  const { request, loading } = useRequests();
 
-    useEffect(() => {
-        request(URL_ORDER_ID.replace('{orderId}', orderId || ''), MethodsEnum.GET, setOrder)
-    }, [])
+  useEffect(() => {
+    request(URL_ORDER_ID.replace('{orderId}', orderId || ''), MethodsEnum.GET, setOrder);
+  }, []);
 
-
-    return {
-        order,
-    }
-
-}
+  return {
+    order,
+    loading,
+  };
+};

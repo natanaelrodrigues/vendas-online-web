@@ -1,7 +1,7 @@
 import { UserType } from '../../modules/login/types/UserType';
 import { AddressType } from './AddressType';
+import { OrdersProductType } from './OrdersProductType';
 import { PaymentType } from './PaymentType';
-import { ProductType } from './ProductType';
 
 export interface OrderType {
   id: number;
@@ -11,5 +11,5 @@ export interface OrderType {
   amountProducs?: number;
   payment?: PaymentType;
   address?: AddressType;
-  orderProduct?: ProductType[];
+  ordersProduct?: OrdersProductType[];
 }

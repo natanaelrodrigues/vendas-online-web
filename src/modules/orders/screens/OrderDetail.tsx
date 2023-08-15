@@ -5,6 +5,9 @@ import { OrderRoutesEnum } from '../routes';
 import { useOrderDetail } from '../hooks/useOrderDetail';
 import { useParams } from 'react-router-dom';
 import { DisplayFlexJustifyCenter } from '../../../shared/components/styles/display.styled';
+import ListOrderProduct from '../components/ListOrderProducts';
+import ListOrdersProduct from '../components/ListOrderProducts';
+import { convertNumberToMoney } from '../../../shared/functions/money';
 
 const OrderDetail = () => {
 
@@ -45,11 +48,11 @@ const OrderDetail = () => {
         </Descriptions>
         <Divider />
         <Descriptions title="Dados do pagamento" bordered>
-          <Descriptions.Item label="Preço">{order.payment?.price}</Descriptions.Item>
+          <Descriptions.Item label="Preço">{convertNumberToMoney(order.payment?.price || 0)}</Descriptions.Item>
           <Descriptions.Item label="Desconto" span={2}>
-          {order.payment?.discount}
+          {convertNumberToMoney(order.payment?.discount || 0)}
           </Descriptions.Item>
-          <Descriptions.Item label="Preço final">{order.payment?.finalPrice}</Descriptions.Item>
+          <Descriptions.Item label="Preço final">{convertNumberToMoney(order.payment?.finalPrice || 0)}</Descriptions.Item>
           <Descriptions.Item label="Tipo de pagamento" span={2}>
           {order.payment?.type}
           </Descriptions.Item>
@@ -59,32 +62,23 @@ const OrderDetail = () => {
         </Descriptions>
         <Divider />
         <Descriptions title="Dados do endereço" bordered>
-          <Descriptions.Item label="Nome">julioNovo</Descriptions.Item>
-          <Descriptions.Item label="Email" span={2}>
-            Prepaid
+          <Descriptions.Item label="Cidade">{order.address?.city?.name}</Descriptions.Item>
+          <Descriptions.Item label="Estado">
+          {order.address?.city?.state?.name}
           </Descriptions.Item>
-          <Descriptions.Item label="Telefone">YES</Descriptions.Item>
-          <Descriptions.Item label="CPF" span={2}>
-            2018-04-24 18:00:00
+          <Descriptions.Item label="Complemento">{order.address?.complement}</Descriptions.Item>
+          <Descriptions.Item label="Numero">
+            {order.address?.numberAddress}
           </Descriptions.Item>
-          <Descriptions.Item label="Usage Time" span={2}>
-            2019-04-24 18:00:00
+          <Descriptions.Item label="CEP" span={2}>
+            {order.address?.cep}
           </Descriptions.Item>
         </Descriptions>
         <Divider />
-        <Descriptions title="Produtos" bordered>
-          <Descriptions.Item label="Nome">julioNovo</Descriptions.Item>
-          <Descriptions.Item label="Email" span={2}>
-            Prepaid
-          </Descriptions.Item>
-          <Descriptions.Item label="Telefone">YES</Descriptions.Item>
-          <Descriptions.Item label="CPF" span={2}>
-            2018-04-24 18:00:00
-          </Descriptions.Item>
-          <Descriptions.Item label="Usage Time" span={2}>
-            2019-04-24 18:00:00
-          </Descriptions.Item>
-        </Descriptions>
+        {order.ordersProduct && order.ordersProduct?.length > 0 && (
+          <ListOrdersProduct ordersProduct={order.ordersProduct} />
+        )}
+        
       </>
       )}
       

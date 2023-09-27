@@ -8,6 +8,7 @@ import { Menu as MenuAntD } from 'antd';
 import { ProductRoutesEnum } from "../../../modules/product/routes";
 import { CategoryRoutesEnum } from "../../../modules/category/routes";
 import { OrderRoutesEnum } from "../../../modules/orders/routes";
+import { UserRoutesEnum } from "../../../modules/user/routes";
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -65,6 +66,7 @@ const Menu = () =>{
             key: 'user',
             label: 'Clientes',
             icon: <UserOutlined />,
+            onClick: () => navigate(UserRoutesEnum.USER)
         },
       ];
   

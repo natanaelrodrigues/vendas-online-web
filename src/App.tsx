@@ -13,11 +13,12 @@ import { MethodsEnum } from './shared/enums/methods.enum'
 import { categoryRoutes } from './modules/category/routes'
 import { useGlobalReducer } from './store/reducers/globalReducer/useGlobalReducer'
 import { orderRoutes } from './modules/orders/routes'
+import { userRoutes } from './modules/user/routes'
 
 
 
 const routes: RouteObject[] = [...loginRoutes]
-const routesLoggedIn: RouteObject[] = [...orderRoutes, ...productRoutes, ...categoryRoutes, ...firstScreenRoutes].map((route) => ({
+const routesLoggedIn: RouteObject[] = [...userRoutes, ...orderRoutes, ...productRoutes, ...categoryRoutes, ...firstScreenRoutes].map((route) => ({
   ...route,
   loader: verifyLoggedIn,
 }));

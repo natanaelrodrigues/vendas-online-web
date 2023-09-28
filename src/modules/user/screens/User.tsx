@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { ColumnsType } from "antd/es/table";
 import Screen from "../../../shared/components/screen/Screen"
 import { UserType } from "../../login/types/UserType";
@@ -10,6 +11,8 @@ import { Spin } from "antd";
 import { Input } from 'antd';
 import { LimitedContainer } from "../../../shared/components/styles/limited.styled";
 import Button from "../../../shared/components/Buttons/button/Button";
+import { getUserInfoByToken } from "../../../shared/functions/connections/auth";
+import { UserTypeEnum } from "../../../shared/enums/userType.enum";
 const { Search } = Input;
 
 const columns: ColumnsType<UserType> = [
@@ -48,6 +51,11 @@ const columns: ColumnsType<UserType> = [
 
 const User = () => {
     const { users, loading, hendleOnChangeSearch } = useUser();
+
+    const userToken = useMemo(() =>{
+      return getUserInfoByToken();
+    },[])
+
     return (
         <Screen
         listBreadcrumb={[
@@ -69,8 +77,11 @@ const User = () => {
                         <Search placeholder='Buscar usuário' onSearch={hendleOnChangeSearch} enterButton />
                     </LimitedContainer>     
 
-                    <LimitedContainer width={240}>
-                        <Button type="primary" onClick={() => null}>Inserir</Button>
+                    <LimitedContainer width={180}>
+                      {userToken?.typeUser === UserTypeEnum.Root &&
+                        <Button type="primary" onClick={() => null}>Inserir Administrador</Button>
+                      }
+                      
                     </LimitedContainer>
    
                 </DisplayFlexJustifyBetween>

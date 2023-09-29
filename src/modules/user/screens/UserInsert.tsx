@@ -38,7 +38,7 @@ const UserInsert = () => {
                         <Button danger onClick={handleCancelInsert} >Cancelar</Button>
                     </LimitedContainer>
                     <LimitedContainer width={120}>
-                        <Button onClick={handleInsertAdmin} disabled={disabledButton} type="primary" >Inserir Admin</Button>
+                        <Button  onClick={handleInsertAdmin} loading={loading} disabled={disabledButton} type="primary" >Inserir Admin</Button>
                     </LimitedContainer>
                 </DisplayFlexJustifyRight>
                 </LimitedContainer>

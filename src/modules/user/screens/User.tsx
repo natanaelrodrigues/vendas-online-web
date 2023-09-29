@@ -13,6 +13,8 @@ import { LimitedContainer } from "../../../shared/components/styles/limited.styl
 import Button from "../../../shared/components/Buttons/button/Button";
 import { getUserInfoByToken } from "../../../shared/functions/connections/auth";
 import { UserTypeEnum } from "../../../shared/enums/userType.enum";
+import { useNavigate } from "react-router-dom";
+import { UserRoutesEnum } from "../routes";
 const { Search } = Input;
 
 const columns: ColumnsType<UserType> = [
@@ -51,10 +53,15 @@ const columns: ColumnsType<UserType> = [
 
 const User = () => {
     const { users, loading, hendleOnChangeSearch } = useUser();
+    const navigate = useNavigate();
 
     const userToken = useMemo(() =>{
       return getUserInfoByToken();
     },[])
+
+    const handleGoToInsertAdmin = () =>{
+      navigate(UserRoutesEnum.USER_INSERT)
+    }
 
     return (
         <Screen
@@ -79,7 +86,7 @@ const User = () => {
 
                     <LimitedContainer width={180}>
                       {userToken?.typeUser === UserTypeEnum.Root &&
-                        <Button type="primary" onClick={() => null}>Inserir Administrador</Button>
+                        <Button type="primary" onClick={handleGoToInsertAdmin}>Inserir Administrador</Button>
                       }
                       
                     </LimitedContainer>

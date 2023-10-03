@@ -5,7 +5,7 @@ import Button from "../../../shared/components/Buttons/button/Button";
 import Select from "../../../shared/components/inputs/select/Select";
 import { LimitedContainer } from "../../../shared/components/styles/limited.styled";
 import { DisplayFlex, DisplayFlexJustifyCenter, DisplayFlexJustifyRight } from "../../../shared/components/styles/display.styled";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import InputMoney from "../../../shared/components/inputs/inputMondy/InputMoney";
 import { useInsertProduct } from "../hooks/useInsertProduct";
 import { useCategory } from "../../category/hooks/useCategory";
@@ -13,7 +13,8 @@ import { useCategory } from "../../category/hooks/useCategory";
 
 
 const ProductInsert = () =>{
-  const { product, loading, disableButton, onChangeInput, handleChangeSelect, handleInsertProduct } = useInsertProduct();
+  const { productId } = useParams<{productId: string}>();
+  const { product, loading, disableButton, onChangeInput, handleChangeSelect, handleInsertProduct } = useInsertProduct(productId);
   const { categories } = useCategory();
   const navigate = useNavigate();
 

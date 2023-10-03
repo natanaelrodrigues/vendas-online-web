@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ProductType } from '../../../shared/types/ProductType';
 import { MethodsEnum } from '../../../shared/enums/methods.enum';
 import { useRequests } from '../../../shared/hooks/useRequests';
@@ -8,6 +8,7 @@ import { URL_PRODUCT, URL_PRODUCT_ID } from '../../../shared/constants/urls';
 import { ProductRoutesEnum } from '../routes';
 
 export const useProduct = () => {
+  const navigate = useNavigate();
   const { products, setProducts } = useProductReducer();
   const [productsFiltered, setProductsFiltered] = useState<ProductType[]>([]);
   const { request } = useRequests();
@@ -21,7 +22,7 @@ export const useProduct = () => {
   }, []);
 
   const handleOnClickInsert = () => {
-    Navigate(ProductRoutesEnum.PRODUCT_INSERT);
+    navigate(ProductRoutesEnum.PRODUCT_INSERT);
   };
 
   const onSearch = (value: string) => {
@@ -42,10 +43,17 @@ export const useProduct = () => {
     await request<ProductType[]>(URL_PRODUCT, MethodsEnum.GET, setProducts);
   };
 
+  const handleEditProduct = async (productId: number) => {
+    navigate(
+      ProductRoutesEnum.PRODUCT_EDIT.replace(':productId', `${productId}`),
+    );
+  };
+
   return {
     productsFiltered,
     handleOnClickInsert,
     onSearch,
     handleDeleteProduct,
+    handleEditProduct,
   };
 };

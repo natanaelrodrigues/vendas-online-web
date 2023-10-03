@@ -4,7 +4,7 @@ import Input from "../../../shared/components/inputs/input/input";
 import Button from "../../../shared/components/Buttons/button/Button";
 import Select from "../../../shared/components/inputs/select/Select";
 import { LimitedContainer } from "../../../shared/components/styles/limited.styled";
-import { DisplayFlexJustifyCenter, DisplayFlexJustifyRight } from "../../../shared/components/styles/display.styled";
+import { DisplayFlex, DisplayFlexJustifyCenter, DisplayFlexJustifyRight } from "../../../shared/components/styles/display.styled";
 import { useNavigate } from "react-router-dom";
 import InputMoney from "../../../shared/components/inputs/inputMondy/InputMoney";
 import { useInsertProduct } from "../hooks/useInsertProduct";
@@ -40,7 +40,7 @@ const ProductInsert = () =>{
           <InputMoney onChange={(event) => onChangeInput(event, 'price', true)} value={product.price} margin='0px 0px 16px 0px' title='Preço' placeholder='Preço' />
           <Select
             title='Categoria'
-            margin='0px 0px 32px 0px'
+            margin='0px 0px 16px 0px'
             style={{  width: '100%' }}
             onChange={handleChangeSelect}
             options={
@@ -50,6 +50,15 @@ const ProductInsert = () =>{
               }))
             }
           />
+          <DisplayFlex>
+            <InputMoney addonBefore="kg" onChange={(event) => onChangeInput(event, 'weigth', true)} value={product.weigth} margin='0px 16px 16px 0px' title='Peso' placeholder='Peso' />
+            <InputMoney addonBefore="cm" onChange={(event) => onChangeInput(event, 'length', true)} value={product.length} margin='0px 0px 16px 0px' title='Comprimento' placeholder='Comprimento' />
+          </DisplayFlex>
+          <DisplayFlex>
+            <InputMoney addonBefore="cm"  onChange={(event) => onChangeInput(event, 'height', true)} value={product.height} margin='0px 16px 16px 0px' title='Altura' placeholder='Altura' />
+            <InputMoney addonBefore="cm"  onChange={(event) => onChangeInput(event, 'width', true)} value={product.width} margin='0px 0px 16px 0px' title='Largura' placeholder='Largura' />
+          </DisplayFlex>
+          <InputMoney addonBefore="cm"  onChange={(event) => onChangeInput(event, 'diameter', true)} value={product.diameter} margin='0px 0px 32px 0px' title='Diâmetro' placeholder='Diâmetro' />
           <DisplayFlexJustifyRight>
               <LimitedContainer margin='0px 8px' width={120}>
                 <Button danger onClick={handleOnClickCancel}>Cancelar</Button>

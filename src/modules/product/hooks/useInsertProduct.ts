@@ -16,10 +16,20 @@ export const useInsertProduct = () => {
     name: '',
     price: 0,
     image: '',
+    weigth: 0,
+    length: 0,
+    height: 0,
+    width: 0,
+    diameter: 0,
   });
 
   useEffect(() => {
-    if (product.name && product.categoryId && product.image && product.price > 0) {
+    if (
+      product.name &&
+      product.categoryId &&
+      product.image &&
+      product.price > 0
+    ) {
       setDisableButton(false);
     } else {
       setDisableButton(true);

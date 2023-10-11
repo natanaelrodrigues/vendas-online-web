@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
 import { InsertProduct } from '../../../shared/dtos/InsertProduct.dto';
-import { connectionAPIPost } from '../../../shared/functions/connections/connectionsAPI';
 import { URL_PRODUCT, URL_PRODUCT_ID } from '../../../shared/constants/urls';
 import { useNavigate } from 'react-router-dom';
 import { ProductRoutesEnum } from '../routes';
-import { useGlobalReducer } from '../../../store/reducers/globalReducer/useGlobalReducer';
 import { useProductReducer } from '../../../store/reducers/productReducer/useProductReducer';
 import { useRequests } from '../../../shared/hooks/useRequests';
 import { MethodsEnum } from '../../../shared/enums/methods.enum';
@@ -22,10 +20,9 @@ const DEFAULT_PRODUCT = {
 
 export const useInsertProduct = (productId?: string) => {
   const navigate = useNavigate();
-  const { request, loading: loadingRequest } = useRequests();
+  const { request } = useRequests();
   const { product: productReducer, setProduct: setProductReducer } =
     useProductReducer();
-  const { setNotification } = useGlobalReducer();
   const [loading, setLoading] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [disableButton, setDisableButton] = useState(true);
@@ -115,7 +112,6 @@ export const useInsertProduct = (productId?: string) => {
     product,
     isEdit,
     loading,
-    loadingRequest,
     disableButton,
     onChangeInput,
     handleChangeSelect,

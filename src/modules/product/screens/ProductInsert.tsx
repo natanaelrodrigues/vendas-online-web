@@ -14,7 +14,7 @@ import { useParams } from "react-router-dom";
 
 const ProductInsert = () =>{
   const { productId } = useParams<{productId: string}>();
-  const { product, isEdit,loading, loadingRequest,  disableButton, onChangeInput, handleChangeSelect, handleInsertProduct, handleOnClickCancel } = useInsertProduct(productId);
+  const { product, isEdit,loading, disableButton, onChangeInput, handleChangeSelect, handleInsertProduct, handleOnClickCancel } = useInsertProduct(productId);
   const { categories } = useCategory();
   
     return <Screen listBreadcrumb={[
@@ -29,7 +29,7 @@ const ProductInsert = () =>{
         name:'INSERIR PRODUTOS'
       }
     ]}>
-      {loadingRequest ? (
+      {loading ? (
         <div>carregando</div>
       ):(
         <DisplayFlexJustifyCenter>

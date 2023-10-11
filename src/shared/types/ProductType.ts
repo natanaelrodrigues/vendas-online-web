@@ -5,7 +5,7 @@ export interface ProductType {
   name: string;
   image: string;
   price: number;
-  weigth: number;
+  weight: number;
   length: number;
   height: number;
   width: number;

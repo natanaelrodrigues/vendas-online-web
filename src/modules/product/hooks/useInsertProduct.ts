@@ -9,26 +9,28 @@ import { useProductReducer } from '../../../store/reducers/productReducer/usePro
 import { useRequests } from '../../../shared/hooks/useRequests';
 import { MethodsEnum } from '../../../shared/enums/methods.enum';
 
+const DEFAULT_PRODUCT = {
+  name: '',
+  price: 0,
+  image: '',
+  weigth: 0,
+  length: 0,
+  height: 0,
+  width: 0,
+  diameter: 0,
+};
+
 export const useInsertProduct = (productId?: string) => {
   const navigate = useNavigate();
-  const { request } = useRequests();
+  const { request, loading: loadingRequest } = useRequests();
   const { product: productReducer, setProduct: setProductReducer } =
     useProductReducer();
   const { setNotification } = useGlobalReducer();
   const [loading, setLoading] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
   const [disableButton, setDisableButton] = useState(true);
 
-  const [product, setProduct] = useState<InsertProduct>({
-    name: '',
-    price: 0,
-    image: '',
-    weigth: 0,
-    length: 0,
-    height: 0,
-    width: 0,
-    diameter: 0,
-  });
-
+  const [product, setProduct] = useState<InsertProduct>(DEFAULT_PRODUCT);
   useEffect(() => {
     if (
       product.name &&
@@ -44,13 +46,16 @@ export const useInsertProduct = (productId?: string) => {
 
   useEffect(() => {
     if (productId) {
-      setProductReducer(undefined);
+      setIsEdit(true);
       request(
         URL_PRODUCT_ID.replace('{productId}', `${productId}`),
         MethodsEnum.GET,
         setProductReducer,
       );
     } else {
+      setIsEdit(false);
+      setProductReducer(undefined);
+      setProduct(DEFAULT_PRODUCT);
     }
   }, [productId]);
 
@@ -60,7 +65,7 @@ export const useInsertProduct = (productId?: string) => {
         name: productReducer.name,
         price: productReducer.price,
         image: productReducer.image,
-        weigth: productReducer.weigth,
+        weight: productReducer.weight,
         length: productReducer.length,
         height: productReducer.height,
         width: productReducer.width,
@@ -89,24 +94,32 @@ export const useInsertProduct = (productId?: string) => {
   };
 
   const handleInsertProduct = async () => {
-    setLoading(true);
-    await connectionAPIPost(URL_PRODUCT, product)
-      .then(() => {
-        setNotification('Sucesso', 'success', 'Produto inserido com saucesso!');
-        navigate(ProductRoutesEnum.PRODUCT);
-      })
-      .catch((error: Error) => {
-        setNotification(error.message, 'error');
-      });
-    setLoading(false);
+    if (productId) {
+      await request(
+        URL_PRODUCT_ID.replace('{productId}', productId),
+        MethodsEnum.PUT,
+        undefined,
+        product,
+      );
+    } else {
+      await request(URL_PRODUCT, MethodsEnum.POST, undefined, product);
+    }
+    navigate(ProductRoutesEnum.PRODUCT);
+  };
+
+  const handleOnClickCancel = () => {
+    navigate(ProductRoutesEnum.PRODUCT);
   };
 
   return {
     product,
+    isEdit,
     loading,
+    loadingRequest,
     disableButton,
     onChangeInput,
     handleChangeSelect,
     handleInsertProduct,
+    handleOnClickCancel,
   };
 };

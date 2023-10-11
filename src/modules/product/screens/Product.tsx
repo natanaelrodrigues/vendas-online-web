@@ -9,8 +9,9 @@ import Screen from '../../../shared/components/screen/Screen';
 import Button from '../../../shared/components/Buttons/button/Button';
 import { Input } from 'antd';
 import { LimitedContainer } from '../../../shared/components/styles/limited.styled';
-import { DisplayFlexJustifyBetween } from '../../../shared/components/styles/display.styled';
+import { DisplayFlex, DisplayFlexJustifyBetween } from '../../../shared/components/styles/display.styled';
 import { useProduct } from '../hooks/useProducts';
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 
 const { Search } = Input;
 
@@ -46,14 +47,18 @@ const Product = () => {
       render: (_, product) => <a>{convertNumberToMoney(product.price)}</a>,
     },
     {
-      title: 'Excluir',
+      title: 'Action',
       dataIndex: '',
+      width: 240,
       key: 'x',
-      render: (_, product) => 
-      <>
-        <a onClick={() => handleEditProduct(product.id)}>Editar</a>
-        <a onClick={() => handleDeleteProduct(product.id)}>Remover</a> 
-      </>
+      render: (_, product) => (
+      <LimitedContainer width={120}>
+        <DisplayFlex>
+          <Button margin='0px 16px 0px 0px' onClick={() => handleEditProduct(product.id)} icon={<EditOutlined />}>Editar</Button>
+          <Button danger onClick={() => handleDeleteProduct(product.id)} icon={<DeleteOutlined />}>Remover</Button> 
+        </DisplayFlex>
+      </LimitedContainer>
+      )
     }
   ],[])
   

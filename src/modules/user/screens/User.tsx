@@ -7,7 +7,6 @@ import { insertMaskInPhone } from "../../../shared/functions/phone";
 import { insertMaskInCpf } from "../../../shared/functions/cpf";
 import Table from "../../../shared/components/table/Table";
 import { DisplayFlexJustifyBetween, DisplayFlexJustifyCenter } from "../../../shared/components/styles/display.styled";
-import { Spin } from "antd";
 import { Input } from 'antd';
 import { LimitedContainer } from "../../../shared/components/styles/limited.styled";
 import Button from "../../../shared/components/Buttons/button/Button";
@@ -15,6 +14,7 @@ import { getUserInfoByToken } from "../../../shared/functions/connections/auth";
 import { UserTypeEnum } from "../../../shared/enums/userType.enum";
 import { useNavigate } from "react-router-dom";
 import { UserRoutesEnum } from "../routes";
+import Loading from "../../../shared/components/loading/Loading";
 const { Search } = Input;
 
 const columns: ColumnsType<UserType> = [
@@ -75,7 +75,7 @@ const User = () => {
           ]}>
             {loading ? (
                 <DisplayFlexJustifyCenter>
-                    <Spin size='large'/>
+                    <Loading size='large'/>
                 </DisplayFlexJustifyCenter>
             ) : ( 
                <>

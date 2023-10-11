@@ -9,12 +9,13 @@ import InputMoney from "../../../shared/components/inputs/inputMondy/InputMoney"
 import { useInsertProduct } from "../hooks/useInsertProduct";
 import { useCategory } from "../../category/hooks/useCategory";
 import { useParams } from "react-router-dom";
+import Loading from "../../../shared/components/loading/Loading";
 
 
 
 const ProductInsert = () =>{
   const { productId } = useParams<{productId: string}>();
-  const { product, isEdit,loading, disableButton, onChangeInput, handleChangeSelect, handleInsertProduct, handleOnClickCancel } = useInsertProduct(productId);
+  const { product, isEdit,loading, disableButton, onChangeInput, loadingProduct, handleChangeSelect, handleInsertProduct, handleOnClickCancel } = useInsertProduct(productId);
   const { categories } = useCategory();
   
     return <Screen listBreadcrumb={[
@@ -29,8 +30,10 @@ const ProductInsert = () =>{
         name:'INSERIR PRODUTOS'
       }
     ]}>
-      {loading ? (
-        <div>carregando</div>
+      {loadingProduct ? (
+        <DisplayFlexJustifyCenter>
+          <Loading size='large' /> 
+        </DisplayFlexJustifyCenter>
       ):(
         <DisplayFlexJustifyCenter>
         <LimitedContainer width={400}>

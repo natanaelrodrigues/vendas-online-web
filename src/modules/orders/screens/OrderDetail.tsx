@@ -1,5 +1,4 @@
-import { Descriptions, Divider, Spin } from 'antd';
-
+import { Descriptions, Divider } from 'antd';
 import Screen from '../../../shared/components/screen/Screen';
 import { OrderRoutesEnum } from '../routes';
 import { useOrderDetail } from '../hooks/useOrderDetail';
@@ -10,6 +9,7 @@ import { convertNumberToMoney } from '../../../shared/functions/money';
 import { insertMaskInCpf } from '../../../shared/functions/cpf';
 import { insertMaskInPhone } from '../../../shared/functions/phone';
 import { insertMaskInCEP } from '../../../shared/functions/address';
+import Loading from '../../../shared/components/loading/Loading';
 
 const OrderDetail = () => {
 
@@ -34,7 +34,7 @@ const OrderDetail = () => {
     >
       {(!order || loading) ? (
         <DisplayFlexJustifyCenter>
-          <Spin tip="Loading" size='large' />
+          <Loading tip="Loading" size='large' />
         </DisplayFlexJustifyCenter>
       ) : (
         <>

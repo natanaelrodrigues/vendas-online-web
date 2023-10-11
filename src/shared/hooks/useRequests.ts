@@ -20,12 +20,20 @@ export const useRequests = () => {
     method: MethodType,
     saveGlobal?: (object: T) => void,
     body?: unknown,
+    message?: string,
   ): Promise<T | undefined> => {
     setLoading(true);
-    const returnData: T | undefined = await ConnectionAPI.connect<T>(url, method, body)
+    const returnData: T | undefined = await ConnectionAPI.connect<T>(
+      url,
+      method,
+      body,
+    )
       .then((result) => {
         if (saveGlobal) {
           saveGlobal(result);
+        }
+        if (message) {
+          setNotification('Sucesso', 'success', message);
         }
         return result;
       })
@@ -39,7 +47,10 @@ export const useRequests = () => {
     return returnData;
   };
 
-  const authRequest = async (navigate: NavigateFunction, body: unknown): Promise<void> => {
+  const authRequest = async (
+    navigate: NavigateFunction,
+    body: unknown,
+  ): Promise<void> => {
     setLoading(true);
     await connectionAPIPost<AuthType>(URL_AUTH, body)
       .then((result) => {

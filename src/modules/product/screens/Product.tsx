@@ -7,7 +7,7 @@ import TootipImage from '../components/TootipImage';
 import { convertNumberToMoney } from '../../../shared/functions/money';
 import Screen from '../../../shared/components/screen/Screen';
 import Button from '../../../shared/components/Buttons/button/Button';
-import { Input } from 'antd';
+import { Input, Modal } from 'antd';
 import { LimitedContainer } from '../../../shared/components/styles/limited.styled';
 import { DisplayFlex, DisplayFlexJustifyBetween } from '../../../shared/components/styles/display.styled';
 import { useProduct } from '../hooks/useProducts';
@@ -17,7 +17,7 @@ const { Search } = Input;
 
 const Product = () => {
 
-  const { productsFiltered, handleOnClickInsert, onSearch, handleDeleteProduct, handleEditProduct} = useProduct();
+  const { openModalDelete, productsFiltered, handleOnClickInsert, onSearch, handleDeleteProduct, handleEditProduct, handleOpenModalDelete, handleCloseModalDelete} = useProduct();
    
   const columns: ColumnsType<ProductType> = useMemo(() => [
     {
@@ -55,7 +55,7 @@ const Product = () => {
       <LimitedContainer width={120}>
         <DisplayFlex>
           <Button margin='0px 16px 0px 0px' onClick={() => handleEditProduct(product.id)} icon={<EditOutlined />}>Editar</Button>
-          <Button danger onClick={() => handleDeleteProduct(product.id)} icon={<DeleteOutlined />}>Remover</Button> 
+          <Button danger onClick={() => handleOpenModalDelete(product.id)} icon={<DeleteOutlined />}>Remover</Button> 
         </DisplayFlex>
       </LimitedContainer>
       )
@@ -71,6 +71,17 @@ const Product = () => {
         name:'PRODUTOS'
       }
     ]}> 
+        <Modal 
+            title="Atenção"
+            open={openModalDelete}
+            onOk={handleDeleteProduct}
+            onCancel={handleCloseModalDelete}
+            okText="Sim"
+            cancelText="Não"
+        >
+            <p>Tem certeza que deseja excluir este produto?</p>
+      </Modal>
+
       <DisplayFlexJustifyBetween margin='0px px 16px 0px'>
         <LimitedContainer width={240}>
           <Search placeholder='Buscar produto' onSearch={onSearch} enterButton />

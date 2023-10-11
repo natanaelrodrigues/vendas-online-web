@@ -8,6 +8,7 @@ import { URL_PRODUCT, URL_PRODUCT_ID } from '../../../shared/constants/urls';
 import { ProductRoutesEnum } from '../routes';
 
 export const useProduct = () => {
+  const [productIdDelete, setProductIdDelete] = useState<number | undefined>();
   const navigate = useNavigate();
   const { products, setProducts } = useProductReducer();
   const [productsFiltered, setProductsFiltered] = useState<ProductType[]>([]);
@@ -35,12 +36,13 @@ export const useProduct = () => {
     }
   };
 
-  const handleDeleteProduct = async (productId: number) => {
+  const handleDeleteProduct = async () => {
     await request(
-      URL_PRODUCT_ID.replace('{productId}', `${productId}`),
+      URL_PRODUCT_ID.replace('{productId}', `${productIdDelete}`),
       MethodsEnum.DELETE,
     );
     await request<ProductType[]>(URL_PRODUCT, MethodsEnum.GET, setProducts);
+    setProductIdDelete(undefined);
   };
 
   const handleEditProduct = async (productId: number) => {
@@ -49,9 +51,20 @@ export const useProduct = () => {
     );
   };
 
+  const handleCloseModalDelete = () => {
+    setProductIdDelete(undefined);
+  };
+
+  const handleOpenModalDelete = (productId: number) => {
+    setProductIdDelete(productId);
+  };
+
   return {
+    openModalDelete: !!productIdDelete,
     productsFiltered,
     handleOnClickInsert,
+    handleOpenModalDelete,
+    handleCloseModalDelete,
     onSearch,
     handleDeleteProduct,
     handleEditProduct,
